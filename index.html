@@ -1,8 +1,41 @@
 <html>
 <head>
 <title>FegorSoft</title>
+<script>
+function teletipo(cad, tmp, iden, cnt) {
+    if (cnt== null) cnt=0;
+    var letra = cad.substr(cnt,1)
+    cuadro=document.getElementById(iden);
+    while (letra == " ")
+      {
+      cnt++;
+      letra += cad.substr(cnt,1);
+     }
+    cuadro.innerHTML += letra;
+    cnt++
+    if (cnt < cad.length){
+       tempor=setTimeout(teletipo,tmp,cad,tmp,iden,cnt); 
+     }	 
+}
+function borra(iden) {
+	document.getElementById(iden).innerHTML = "";
+}
+</script>
 </head>
-<body>
-<p>FegorSoft está en construcción en estos momentos.</p>
+<body style="background-color:black; color: green" onload="main()">
+<tt><h1 id="m1"></h1></tt>
+<tt><h2 id="m2"></h2></tt>
+
+<script language="javascript">
+	function main() {
+	teletipo(btoa("Welcome to FegorSoft"), 100, 'm1');
+	setTimeout(()=>{borra('m1');},5000);
+	setTimeout(()=>{teletipo("Welcome to FegorSoft", 100, 'm1');},5100);
+	
+	setTimeout(()=>{teletipo(btoa("Cybersecurity & Privacy"), 100, 'm2');},1000);
+	setTimeout(()=>{borra('m2');},6000);
+	setTimeout(()=>{teletipo("Cybersecurity & Privacy", 100, 'm2');},6100);
+}
+</script>
 </body>
 </html>
